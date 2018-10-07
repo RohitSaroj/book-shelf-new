@@ -3,17 +3,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Search from './search';
+import SearchResult from './search-result';
 
 class App extends React.Component {
     constructor(props){
         super(props);
+        this.state = {
+            "searchResult" : {}
+        };
         this.performSearch = this.performSearch.bind(this);
     }
     render() {
+        let result = [];
+        const searchResult = this.state.searchResult;
+        if(searchResult && searchResult.results && searchResult.results.work){
+            result = searchResult.results.work;
+        }
         return (
             <div className="parent-container container good-reads-search-container">
                 <Search performSearch={this.performSearch} />
-                <div className="search-result"></div>
+                <SearchResult result = {result}/>
             </div>
         );
     }
