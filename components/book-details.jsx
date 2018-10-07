@@ -1,4 +1,5 @@
 import React from "react";
+import { spawn } from "child_process";
 //import "./../css/book-shelf.css";
 
 class BookDetails extends React.Component {
@@ -11,10 +12,19 @@ class BookDetails extends React.Component {
         id={bestBook.id._}
       >
         <img className="book-image" src={bestBook.small_image_url} />
-        <span className="book-title m-4">{bestBook.title}</span>
-        <span className="author-deatils">
-          <span className={bestBook.author.name} />
-        </span>
+        <div className="author-details d-inline-block">
+          <div className="book-title ml-4">{bestBook.title}</div>
+          <div className="author-name ml-5">- By {bestBook.author.name}</div>
+          <div className="ratings-container">
+            <span className="average-rating">
+              Average rating: {details.average_rating}
+            </span>
+            <span className="rating-details">
+              Rating Details &nbsp;.&nbsp; {details.ratings_count._} Ratings
+              &nbsp;.&nbsp; {details.text_reviews_count._} Reviews
+            </span>
+          </div>
+        </div>
       </div>
     );
   }

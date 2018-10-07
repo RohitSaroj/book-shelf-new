@@ -1,3 +1,11 @@
 .book-details-container {
     cursor: pointer;
 }
+
+.book-details-container .author-details {
+    width: 90%;
+}
+
+.search-box {
+    margin: 20px;
+}
