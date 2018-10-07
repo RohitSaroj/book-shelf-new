@@ -1,24 +1,20 @@
-import React from 'react';
-import BookDetails from './book-details';
+import React from "react";
+import BookDetails from "./book-details";
 
 class SearchResult extends React.Component {
-    render() {
-        return (
-            <div className="search-result-container">
-                {this.renderBooks()}
-            </div>
-        );
+  render() {
+    return <div className="search-result-container">{this.renderBooks()}</div>;
+  }
+  renderBooks() {
+    const rows = [];
+    let count;
+    const bookDetails = this.props.result;
+    const numrows = bookDetails.length;
+    for (count = 0; count < numrows; count++) {
+      rows.push(<BookDetails key={count} detail={bookDetails[count]} />);
     }
-    renderBooks() {
-        const rows = [];
-        let count;
-        const bookDetails = this.props.result;
-        const numrows = bookDetails.length;
-        for (count = 0; count < numrows; count++) {
-            rows.push(<BookDetails key={count} detail={bookDetails[count]}/>);
-        }
-        return <div>{rows}</div>;
-    }
+    return <div className="list-group">{rows}</div>;
+  }
 }
 
 module.exports = SearchResult;
