@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
 const routes = require('./routes/index');
+const bookDetails = require('./routes/book-detail');
 const app = express();
 
 //view engine set up
@@ -24,7 +25,7 @@ app.use('/css', express.static(path.join(__dirname, 'css')));
 
 
 app.use(express.static(path.join(__dirname, 'dist')));
-
+app.use('/bookDetail', bookDetails);
 app.use('*', routes);
 
 // catch 404 and forward to error handler

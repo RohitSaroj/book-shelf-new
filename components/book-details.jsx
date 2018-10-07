@@ -1,6 +1,10 @@
 import React from "react";
 
 class BookDetails extends React.Component {
+  constructor(props){
+    super(props);
+    this.showDetailDescription = this.showDetailDescription.bind(this);
+  }
   render() {
     const details = this.props.detail;
     const bestBook = details.best_book;
@@ -8,7 +12,10 @@ class BookDetails extends React.Component {
       <div
         className="book-details-container list-group-item list-group-item-action"
         id={bestBook.id._}
-      >
+        onClick={this.showDetailDescription}
+        ref={child => {
+          this.bookDetail = child;
+        }}>
         <img className="book-image" src={bestBook.small_image_url} />
         <div className="author-details d-inline-block">
           <div className="book-title ml-4">{bestBook.title}</div>
@@ -25,6 +32,11 @@ class BookDetails extends React.Component {
         </div>
       </div>
     );
+  }
+  showDetailDescription() {
+    var id = this.bookDetail.id;
+
+    this.props.showBookDetail(id);
   }
 }
 

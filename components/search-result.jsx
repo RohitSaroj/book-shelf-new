@@ -11,7 +11,7 @@ class SearchResult extends React.Component {
     const bookDetails = this.props.result;
     const numrows = bookDetails.length;
     for (count = 0; count < numrows; count++) {
-      rows.push(<BookDetails key={count} detail={bookDetails[count]} />);
+      rows.push(<BookDetails key={count} detail={bookDetails[count]}  showBookDetail={this.props.showBookDetail}/>);
     }
     return (
       <div className="list-group">{rows}</div>
