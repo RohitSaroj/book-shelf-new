@@ -1,6 +1,4 @@
 import React from "react";
-import { spawn } from "child_process";
-//import "./../css/book-shelf.css";
 
 class BookDetails extends React.Component {
   render() {
