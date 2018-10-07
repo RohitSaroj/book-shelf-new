@@ -20,6 +20,8 @@ app.use(cookieParser());
 
 //Routers path
 app.use('/vendor', express.static(path.join(__dirname, 'bower_components')));
+app.use('/css', express.static(path.join(__dirname, 'css')));
+
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
