@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const text = req.body.text;
+  const text = req.body.data.text;
   searchBook(text).then(data => {
     let result = {};
     if (data && data.GoodreadsResponse) {
