@@ -8,8 +8,8 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search-container w-50 mx-auto">
-        <div clasName="search-box">
-          <label for="searchBook" class="search-book-label">
+        <div className="search-box w-100">
+          <label for="searchBook" className="search-book-label">
             Search Book
           </label>
           <input
