@@ -12,11 +12,11 @@ class App extends React.Component {
         super(props);
         this.state = {
             "searchResult": {},
-            "currentBookDetail": null,
-            "redirectUrl": ""
+            "currentBookDetail": null
         };
         this.performSearch = this.performSearch.bind(this);
         this.showBookDetail = this.showBookDetail.bind(this);
+        this.returnToSearch = this.returnToSearch.bind(this);
     }
     render() {
         return (
@@ -51,7 +51,7 @@ class App extends React.Component {
     renderBookDetails() {
         if (this.state.currentBookDetail) {
             return (
-                <BookDetailDescription bookDetail={this.state.currentBookDetail} />
+                <BookDetailDescription bookDetail={this.state.currentBookDetail}  returnToSearch = {this.returnToSearch}/>
             )
         }
         return (
@@ -102,9 +102,14 @@ class App extends React.Component {
                 return;
             }
             this.setState({
-                "currentBookDetail": data.body,
-                "redirectUrl": "/book-detail"
+                "currentBookDetail": data.body
             });
+        });
+    }
+
+    returnToSearch(){
+        this.setState({
+            "currentBookDetail": null,
         });
     }
 }

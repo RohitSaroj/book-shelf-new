@@ -20,6 +20,7 @@ class BookDetailDescription extends React.Component {
                         </span>
                     </div>
                 </div>
+                <button onClick={this.props.returnToSearch}>Return</button>
             </div>
         );
     }
