@@ -9,3 +9,8 @@
 .search-box {
     margin: 20px;
 }
+
+.book-details .book-image {
+    width: 183px;
+    height: 247px;
+}
