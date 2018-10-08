@@ -1,7 +1,7 @@
 import React from "react";
 
 class BookDetails extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.showDetailDescription = this.showDetailDescription.bind(this);
   }
@@ -15,18 +15,19 @@ class BookDetails extends React.Component {
         onClick={this.showDetailDescription}
         ref={child => {
           this.bookDetail = child;
-        }}>
+        }}
+      >
         <img className="book-image" src={bestBook.small_image_url} />
-        <div className="author-details d-inline-block">
+        <div className="author-details d-inline-block align-top">
           <div className="book-title ml-4">{bestBook.title}</div>
           <div className="author-name ml-5">- By {bestBook.author.name}</div>
-          <div className="ratings-container">
+          <div className="ratings-container ml-5">
             <span className="average-rating">
               Average rating: {details.average_rating}
             </span>
             <span className="rating-details">
-              Rating Details &nbsp;.&nbsp; {details.ratings_count._} Ratings
-              &nbsp;.&nbsp; {details.text_reviews_count._} Reviews
+              &nbsp;Rating Details &nbsp;.&nbsp; {details.ratings_count._}{" "}
+              Ratings &nbsp;.&nbsp; {details.text_reviews_count._} Reviews
             </span>
           </div>
         </div>
