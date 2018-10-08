@@ -9,7 +9,11 @@ const searchBook = (text) => {
         };
         client.get(url, args, (data, response) => {
             if (Number(response.statusCode) === 200) {
-                resolve((data));
+                let result = {};
+                if (data && data.GoodreadsResponse) {
+                    result = data.GoodreadsResponse.search;
+                }
+                resolve(result);
             } else {
                 console.error(err);
                 reject(new Error("Error in good read api"));
@@ -22,14 +26,16 @@ const searchBook = (text) => {
 const bookDetail = (bookId) => {
     return new Promise((resolve, reject) => {
         const url = `${process.env.GOOD_READ_URI}${process.env.GOOD_READ_BOOK_DETAIL}?key=${process.env.GOOD_READ_DEVELOPER_KEY}&id=${bookId}`;
-        console.log(url);
         client.get(url, {}, (data, response) => {
             if (Number(response.statusCode) === 200) {
-                resolve(data);
+                let result = {};
+                if (data && data.GoodreadsResponse) {
+                    result = data.GoodreadsResponse.book;
+                }
+                resolve(result);
             } else {
                 console.error(err);
                 reject(new Error("Error in good read api"));
-
             }
         });
     });

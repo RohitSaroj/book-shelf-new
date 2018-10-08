@@ -85,7 +85,7 @@ class App extends React.Component {
                 'Content-Type': 'application/json',
             }
         };
-        request.get(`/${bookId}`, args, (err, data) => {
+        request.get(`/bookDetail/${bookId}`, args, (err, data) => {
             this.hideOverlay();
             if (err) {
                 console.error(err);
@@ -93,6 +93,8 @@ class App extends React.Component {
             }
             this.setState({
                 "bookDetail": data.body
+            }, () => {
+                
             });
         });
     }

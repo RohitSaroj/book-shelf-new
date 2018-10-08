@@ -11,12 +11,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const text = req.body.data.text;
   searchBook(text).then(data => {
-    let result = {};
-    if (data && data.GoodreadsResponse) {
-      result = data.GoodreadsResponse.search;
-    }
-
-    res.status(200).json(result);
+    res.status(200).json(data);
   }, err => {
     res.status(err.status);
   })
