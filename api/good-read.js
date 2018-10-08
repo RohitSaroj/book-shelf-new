@@ -15,7 +15,6 @@ const searchBook = (text) => {
                 }
                 resolve(result);
             } else {
-                console.error(err);
                 reject(new Error("Error in good read api"));
 
             }

@@ -20,6 +20,22 @@ Run following command:
 * `npm run build-project` - To install project dependcy and build project
 * `npm start` - To start project (now go to browser and go to http://localhost:3000 to run project)
 
+### Environment Variables
+
+.env file contains environment variable. Replace value of GOOD_READ_DEVELOPER_KEY with developer key value provide by `GOOD READ`.
+
+* PORT = 3000
+* GOOD_READ_DEVELOPER_KEY = `<Good Read developer key>`
+* GOOD_READ_URI = https://www.goodreads.com/
+* GOOD_READ_SEARCH_URI = search/index.xml
+* GOOD_READ_BOOK_DETAIL = book/show.xml
+
+### API 
+
+* [Good Read API](https://www.goodreads.com/api/index) - It contains all API provided by GoodRead
+* [Search Books](https://www.goodreads.com/api/index#search.books) - API to search books as per string passed
+* [Book Review](https://www.goodreads.com/api/index#book.show) - API to fetch particular book review.
+
 
 ## Built With
 
