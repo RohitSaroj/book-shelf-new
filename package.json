@@ -6,7 +6,7 @@
     "scripts": {
         "start": "node ./bin/www",
         "build-project": "yarn && node node_modules/bower/bin/bower install && node node_modules/webpack/bin/webpack.js -p",
-        "heroku-prebuild" :"yarn && node node_modules/bower/bin/bower install && node node_modules/webpack/bin/webpack.js -p"
+        "heroku-prebuild": "yarn && node node_modules/bower/bin/bower install && node node_modules/webpack/bin/webpack.js -p"
     },
     "repository": {
         "type": "git"
@@ -31,6 +31,7 @@
         "dotenv": "^6.0.0",
         "ejs": "^2.6.1",
         "express": "^4.16.3",
+        "gh-pages": "^2.0.1",
         "node-rest-client": "^3.1.0",
         "path": "0.12.7",
         "react": "^16.5.2",

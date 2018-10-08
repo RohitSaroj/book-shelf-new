@@ -2,15 +2,7 @@ import request from 'superagent';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
-import {
-    BrowserRouter as Router,
-    Route,
-    Redirect
-} from 'react-router-dom';
-
 import BookDetailDescription from './book-detail-description';
-
 import Search from './search';
 import SearchResult from './search-result';
 import NavBar from "./navbar";
@@ -20,33 +12,51 @@ class App extends React.Component {
         super(props);
         this.state = {
             "searchResult": {},
-            "currentBookDetail": null
+            "currentBookDetail": null,
+            "redirectUrl": ""
         };
         this.performSearch = this.performSearch.bind(this);
         this.showBookDetail = this.showBookDetail.bind(this);
     }
     render() {
+        return (
+            <React.Fragment>
+                <NavBar />
+                <div className="parent-container container good-reads-search-container">
+                    <div id="overlay-inAbox" className="overlay"></div>
+                    {this.renderSearch()}
+                    {this.renderBookDetails()}
+                </div>
+            </React.Fragment>
+        );
+    }
+    renderSearch() {
         let result = [];
         const searchResult = this.state.searchResult;
         if (searchResult && searchResult.results && searchResult.results.work) {
             result = searchResult.results.work;
         }
-        return (
-            <React.Fragment>
-                <NavBar />
-                <div className="parent-container container good-reads-search-container">
-                    <Router>
-                        <div>
-                            <Route path="/book-detail" exact component={() => <BookDetailDescription bookDetail={this.currentBookDetail} />
-                            } />
-                        </div>
-                    </Router>
-                    <div id="overlay-inAbox" className="overlay"></div>
+        if (this.state.currentBookDetail == null) {
+            return (
+                <div>
                     <Search performSearch={this.performSearch} />
-                    <SearchResult result={result} showBookDetail = {this.showBookDetail} />
+                    <SearchResult result={result} showBookDetail={this.showBookDetail} />
                 </div>
-            </React.Fragment>
-        );
+            );
+        }
+        return (
+            <div></div>
+        )
+    }
+    renderBookDetails() {
+        if (this.state.currentBookDetail) {
+            return (
+                <BookDetailDescription bookDetail={this.state.currentBookDetail} />
+            )
+        }
+        return (
+            <div></div>
+        )
     }
     showOverlay() {
         window.openOverlay('overlay-inAbox');
@@ -92,9 +102,8 @@ class App extends React.Component {
                 return;
             }
             this.setState({
-                "bookDetail": data.body
-            }, () => {
-                
+                "currentBookDetail": data.body,
+                "redirectUrl": "/book-detail"
             });
         });
     }

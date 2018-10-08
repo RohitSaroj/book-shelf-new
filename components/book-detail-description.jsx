@@ -2,14 +2,23 @@ import React from 'react';
 
 class BookDetailDescription extends React.Component {
     render() {
-        const details = this.props.detail;
-        const bestBook = details.best_book;
+        const bookDetail = this.props.bookDetail;
         return (
-            <div className="book-details-container" id={bestBook.id}>
-                <div className="book-title">{bestBook.title}</div>
-                <image className="book-image" src={bestBook.small_image_url} />
-                <div className="auther-deatils">
-                    <div className={bestBook.author.name} />
+            <div className="book-details-container list-group-item list-group-item-action"
+                id={bookDetail.id}>
+                <img className="book-image" src={bookDetail.image_url} />
+                <div className="author-details d-inline-block">
+                    <div className="book-title ml-4">{bookDetail.title}</div>
+                    <div className="book-description ml-4" dangerouslySetInnerHTML={{ __html: bookDetail.description }}></div>
+                    {/* <div className="author-name ml-5">- By {bookDetail.author.name}</div> */}
+                    <div className="ratings-container">
+                        <span className="average-rating">
+                            Average rating: {bookDetail.average_rating}
+                        </span>
+                        <span className="rating-details">
+                            Rating Details &nbsp;.&nbsp; {bookDetail.ratings_count} Ratings &nbsp;.&nbsp; {bookDetail.text_reviews_count} Reviews
+                        </span>
+                    </div>
                 </div>
             </div>
         );
