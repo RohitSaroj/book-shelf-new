@@ -3,6 +3,17 @@ import React from "react";
 class BookDetailDescription extends React.Component {
   render() {
     const bookDetail = this.props.bookDetail;
+    let authorName = bookDetail.authors.author.name;
+    if (_.isEmpty(authorName)) {
+      authorName = "";
+      _.each(bookDetail.authors.author, function(obj, key) {
+        if (key === 0) {
+          authorName = obj.name;
+        } else {
+          authorName = authorName + " | " + obj.name;
+        }
+      });
+    }
     return (
       <div className="book-details row" id={bookDetail.id}>
         <div className="col-1">
@@ -22,7 +33,7 @@ class BookDetailDescription extends React.Component {
               {bookDetail.title}
             </h3>
             <div className="author-name ml-4 font-weight-bold text-secondary">
-              by {bookDetail.authors.author.name}
+              by {authorName}
             </div>
             <div className="ratings-container ml-4 mt-1">
               <span className="average-rating lead">
