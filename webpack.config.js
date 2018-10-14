@@ -3,12 +3,8 @@ const config = {
   entry: './components/app.jsx',
   output: {
     path: path.join(__dirname, "./dist/javascripts/"),
-    filename: "bundle.js"
-  },
-  mode: "development",
-  optimization: {
-    // We no not want to minimize our code.
-    minimize: false
+    filename: "bundle.js",
+    publicPath:'/'
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -20,6 +16,7 @@ const config = {
         loader: 'babel-loader',
         query: {
           presets:
+            
             [
               'es2015',
               'react',

@@ -4,8 +4,19 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.onSearch = this.onSearch.bind(this);
+    this.state = {
+      isEmptySearch: false
+    };
   }
   render() {
+    const showError = () => {
+      if (this.state.isEmptySearch) {
+        return (
+          <div className="no-search-error">Please enter text to search.</div>
+        )
+      }
+      return (<div></div>)
+    }
     return (
       <div className="search-container w-50 mx-auto">
         <div className="search-box w-100">
@@ -27,15 +38,17 @@ class Search extends React.Component {
             onClick={this.onSearch}
           />
         </div>
+        {showError()}
       </div>
     );
   }
 
   onSearch() {
     const searchText = this.searchBook.value;
-    if (searchText) {
-      this.props.performSearch(searchText);
-    }
+    this.setState({
+      "isEmptySearch": searchText ? false : true
+    });
+    this.props.performSearch(searchText);
   }
 }
 

@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add xmlToJSON
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js
 
 PATH: 
-  C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Android;C:\Windows\System32;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Git\cmd;C:\Program Files\TortoiseGit\bin;C:\Users\manali\AppData\Local\Microsoft\WindowsApps;C:\Users\manali\AppData\Roaming\npm;C:\Users\manali\AppData\Local\Yarn\bin
+  C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;E:\Manali\job search 2018\assignment\prudentials\code\node_modules\.bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Android;C:\Windows\System32;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Git\cmd;C:\Program Files\TortoiseGit\bin;C:\Users\manali\AppData\Local\Microsoft\WindowsApps;C:\Users\manali\AppData\Roaming\npm;C:\Users\manali\AppData\Local\Yarn\bin
 
 Yarn version: 
   1.9.4
@@ -14,17 +14,8 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/xmlToJSON: Not found
-      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:64202:18)
-      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:137468:22)
-      at Request.emit (events.js:182:13)
-      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:138440:10)
-      at Request.emit (events.js:182:13)
-      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:138362:12)
-      at Object.onceWrapper (events.js:273:13)
-      at IncomingMessage.emit (events.js:187:15)
-      at endReadableNT (_stream_readable.js:1092:12)
-      at process._tickCallback (internal/process/next_tick.js:63:19)
+  Error: getaddrinfo ENOTFOUND registry.npmjs.org registry.npmjs.org:443
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:57:26)
 
 npm manifest: 
   {
@@ -34,7 +25,9 @@ npm manifest:
       "main": "app.js",
       "scripts": {
           "start": "node ./bin/www",
-          "build-project": "yarn && node node_modules/bower/bin/bower install && node node_modules/webpack/bin/webpack.js -p"
+          "build-project": "yarn && node node_modules/bower/bin/bower install && node node_modules/webpack/bin/webpack.js -p",
+          "test": "./node_modules/.bin/jasmine-node spec",
+          "heroku-postbuild" :"yarn && node node_modules/bower/bin/bower install && node node_modules/webpack/bin/webpack.js -p"
       },
       "repository": {
           "type": "git"
@@ -43,9 +36,6 @@ npm manifest:
           "email": "sutar.manali@gmail.com",
           "name": "Manali Sutar"
       },
-      "licenses": [
-          "MIT"
-      ],
       "keywords": [
           "node",
           "express"
@@ -62,6 +52,7 @@ npm manifest:
           "dotenv": "^6.0.0",
           "ejs": "^2.6.1",
           "express": "^4.16.3",
+          "jasmine-node": "1.16.2",
           "node-rest-client": "^3.1.0",
           "path": "0.12.7",
           "react": "^16.5.2",
@@ -69,9 +60,8 @@ npm manifest:
           "react-router-dom": "^4.3.1",
           "superagent": "^4.0.0-beta.5",
           "webpack": "^4.19.1",
-          "xmldom": "^0.1.27"
-      },
-      "devDependencies": {
+          "xml2js": "^0.4.19",
+          "xmldom": "^0.1.27",
           "webpack-cli": "^3.1.0"
       }
   }
@@ -3628,7 +3618,7 @@ Lockfile:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   
-  xml2js@>=0.2.4:
+  xml2js@>=0.2.4, xml2js@^0.4.19:
     version "0.4.19"
     resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.4.19.tgz#686c20f213209e94abf0d1bcf1efaa291c7827a7"
     dependencies:
