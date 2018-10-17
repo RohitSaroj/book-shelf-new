@@ -6,8 +6,7 @@
     "scripts": {
         "start": "node ./bin/www",
         "build-project": "yarn && node node_modules/bower/bin/bower install && node node_modules/webpack/bin/webpack.js -p",
-        "test": "./node_modules/.bin/jasmine-node --verbose --junitreport spec",
-        "test1": "nyc node_modules/jasmine/bin/jasmine.js",
+        "test": "nyc node_modules/jasmine/bin/jasmine.js",
         "heroku-postbuild": "yarn && node node_modules/bower/bin/bower install && node node_modules/webpack/bin/webpack.js -p"
     },
     "repository": {

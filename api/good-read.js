@@ -7,7 +7,6 @@ const searchBook = (text) => {
             reject(new Error('Provide search text'));
         }
         const url = `${process.env.GOOD_READ_URI}${process.env.GOOD_READ_SEARCH_URI}?key=${process.env.GOOD_READ_DEVELOPER_KEY}&q=${text}`;
-        console.log(url);
         client.get(url, {}, (data, response) => {
             if (Number(response.statusCode) === 200) {
                 let result = {};

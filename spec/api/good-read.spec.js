@@ -1,3 +1,6 @@
+//To load config
+require("dotenv").config();
+
 describe("Good Read API integration,", () => {
     const GoodReadAPI = require('../../api/good-read');
     it("should function to search book and get book details,", () => {
@@ -24,16 +27,38 @@ describe("Good Read API integration,", () => {
                 });
         });
         describe("if search text is passed,", () => {
-            it('should return Error if Environment variable not defined', (done) => {
-                process.env.GOOD_READ_URI = "";
-                process.env.GOOD_READ_SEARCH_URI = "";
-                process.env.GOOD_READ_DEVELOPER_KEY = "";
-                underTest("test")
-                    .then(done.fail)
-                    .catch(err => {
-                        expect(err.message).toBe('Error in good read API')
+            describe("if GOOD_READ_DEVELOPER_KEY is not set in environment", () => {
+                it('should return Error,', (done) => {
+                    if (process.env.GOOD_READ_DEVELOPER_KEY === "<GOOD_READ_DEVELOPER_KEY>") {
+                        underTest("test")
+                            .then(done.fail)
+                            .catch(err => {
+                                expect(err.message).toBe('Error in good read API')
+                                done();
+                            });
+                    } else {
                         done();
-                    });
+                    }
+                });
+            })
+
+            describe("if GOOD_READ_DEVELOPER_KEY is set in environment", () => {
+                it('should return Result,', (done) => {
+                    if (process.env.GOOD_READ_DEVELOPER_KEY === "<GOOD_READ_DEVELOPER_KEY>") {
+                        done();
+                    } else {
+                        underTest("test")
+                            .then(response => {
+                                if (result) {
+                                    expect(response.results).toBeDefined();
+                                    done();
+                                } else {
+                                    done.fail();
+                                }
+                            })
+                            .catch(done.fail);
+                    }
+                });
             });
         });
     });
@@ -55,6 +80,41 @@ describe("Good Read API integration,", () => {
                     expect(err.message).toBe('Provide book Id');
                     done();
                 });
+        });
+        describe("if book id is passed,", () => {
+            describe("if GOOD_READ_DEVELOPER_KEY is not set in environment", () => {
+                it('should return Error,', (done) => {
+                    if (process.env.GOOD_READ_DEVELOPER_KEY === "<GOOD_READ_DEVELOPER_KEY>") {
+                        underTest("test")
+                            .then(done.fail)
+                            .catch(err => {
+                                expect(err.message).toBe('Error in good read API')
+                                done();
+                            });
+                    } else {
+                        done();
+                    }
+                });
+            })
+
+            describe("if GOOD_READ_DEVELOPER_KEY is set in environment", () => {
+                it('should return Result,', (done) => {
+                    if (process.env.GOOD_READ_DEVELOPER_KEY === "<GOOD_READ_DEVELOPER_KEY>") {
+                        done();
+                    } else {
+                        underTest("test")
+                            .then(response => {
+                                if (result) {
+                                    expect(response.work).toBeDefined();
+                                    done();
+                                } else {
+                                    done.fail();
+                                }
+                            })
+                            .catch(done.fail);
+                    }
+                });
+            });
         });
     });
 });
