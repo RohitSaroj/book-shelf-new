@@ -4,3 +4,7 @@ bower_components/
 
 # Compile file
 dist/
+
+#test compile file
+coverage/
+.nyc_output/

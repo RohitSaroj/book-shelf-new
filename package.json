@@ -7,7 +7,8 @@
         "start": "node ./bin/www",
         "build-project": "yarn && node node_modules/bower/bin/bower install && node node_modules/webpack/bin/webpack.js -p",
         "test": "./node_modules/.bin/jasmine-node --verbose --junitreport spec",
-        "heroku-postbuild" :"yarn && node node_modules/bower/bin/bower install && node node_modules/webpack/bin/webpack.js -p"
+        "test1": "nyc node_modules/jasmine/bin/jasmine.js",
+        "heroku-postbuild": "yarn && node node_modules/bower/bin/bower install && node node_modules/webpack/bin/webpack.js -p"
     },
     "repository": {
         "type": "git"
@@ -32,16 +33,30 @@
         "dotenv": "^6.0.0",
         "ejs": "^2.6.1",
         "express": "^4.16.3",
+        "jasmine": "^3.2.0",
+        "jasmine-console-reporter": "^3.1.0",
         "jasmine-node": "1.16.2",
         "node-rest-client": "^3.1.0",
+        "nyc": "^13.1.0",
         "path": "0.12.7",
         "react": "^16.5.2",
         "react-dom": "^16.5.2",
         "react-router-dom": "^4.3.1",
         "superagent": "^4.0.0-beta.5",
         "webpack": "^4.19.1",
+        "webpack-cli": "^3.1.0",
         "xml2js": "^0.4.19",
-        "xmldom": "^0.1.27",
-        "webpack-cli": "^3.1.0"
+        "xmldom": "^0.1.27"
+    },
+    "nyc": {
+        "exclude": [
+            "**/*.spec.js",
+            "build"
+        ],
+        "reporter": [
+            "lcov",
+            "text-summary",
+            "html"
+        ]
     }
 }
