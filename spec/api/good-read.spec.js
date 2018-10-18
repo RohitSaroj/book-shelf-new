@@ -98,21 +98,37 @@ describe("Good Read API integration,", () => {
             })
 
             describe("if GOOD_READ_DEVELOPER_KEY is set in environment", () => {
-                it('should return Result,', (done) => {
-                    if (process.env.GOOD_READ_DEVELOPER_KEY === "<GOOD_READ_DEVELOPER_KEY>") {
-                        done();
-                    } else {
-                        underTest("test")
-                            .then(response => {
-                                if (result) {
-                                    expect(response.work).toBeDefined();
-                                    done();
-                                } else {
-                                    done.fail();
-                                }
-                            })
-                            .catch(done.fail);
-                    }
+                describe("if pass argument is not valid Book ID,", () => {
+                    it('should return an Error,', (done) => {
+                        if (process.env.GOOD_READ_DEVELOPER_KEY === "<GOOD_READ_DEVELOPER_KEY>") {
+                            done();
+                        } else {
+                            underTest("test")
+                            .then(done.fail)
+                            .catch(err => {
+                                expect(err.message).toBe('Error in good read API')
+                                done();
+                            });
+                        }
+                    });
+                })
+                describe("if pass argument is valid Book ID,", () => {
+                    it('should return Result,', (done) => {
+                        if (process.env.GOOD_READ_DEVELOPER_KEY === "<GOOD_READ_DEVELOPER_KEY>") {
+                            done();
+                        } else {
+                            underTest(20360111)
+                                .then(response => {
+                                    if (result) {
+                                        expect(response.work).toBeDefined();
+                                        done();
+                                    } else {
+                                        done.fail();
+                                    }
+                                })
+                                .catch(done.fail);
+                        }
+                    });
                 });
             });
         });

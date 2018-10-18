@@ -35,8 +35,7 @@ const bookDetail = (bookId) => {
                 }
                 resolve(result);
             } else {
-                console.error(err);
-                reject(new Error("Error in good read api"));
+                reject(new Error("Error in good read API"));
             }
         });
     });
