@@ -1,1 +1,2 @@
-This is a test
+This was a test
+New Line for test
