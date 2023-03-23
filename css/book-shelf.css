@@ -1,16 +1,16 @@
 .book-details-container {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .book-details-container .author-details {
-    width: 90%;
+  width: 90%;
 }
 
 .search-box {
-    margin: 20px;
+  margin: 20px;
 }
 
 .book-details .book-image {
-    width: 183px;
-    height: 247px;
+  width: 183px;
+  height: 248px;
 }
